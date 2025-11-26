@@ -30,11 +30,10 @@ influxdb3 serve \
   --data-dir ~/.influxdb3 \
   --http-bind 0.0.0.0:8282 \
   --verbose \
-  --log-filter info \
-  --without-auth
+  --log-filter info
 ```
 
-This will start InfluxDB3 on port 8282 without authentication. Keep this terminal session running.
+This will start InfluxDB3 on port 8282. Keep this terminal session running.
 
 ### 2. Run the Mock OPC-UA Server
 
@@ -64,7 +63,7 @@ pip install -r requirements.txt
 python mock-opc-ua.py
 ```
 
-This will start the OPC-UA server on `opc.tcp://127.0.0.1:4840` and begin sending simulated sensor data (Temperature_1, Wind_1, N-01, Temperature_2, Wind_2, N-02) every 5 seconds. Keep this terminal session running.
+This will start the OPC-UA server on `opc.tcp://127.0.0.1:4840` and begin sending simulated sensor data every 5 seconds. Keep this terminal session running.
 
 ### 3. Start Telegraf
 
@@ -94,7 +93,7 @@ Access the InfluxDB Explorer at `http://localhost:8888` in your web browser.
 
 ### 5. Connect Grafana for Real-Time Visualization
 
-Connect Grafana to your InfluxDB3 instance to visualize the sensor data in real time:
+Connect Grafana to your InfluxDB3 instance to visualize the sensor data in real time. The custom scatter/line visualization shown in `assets/scatter_line_plot.js` (place the script contents from `scatter_line_plot.js` into a Grafana “Transformations → Overrides → Code → Panel option”) renders the thresholds, annotations, and historical vs. latest traces entirely in JavaScript:
 
 1. Add InfluxDB3 as a data source in Grafana
 2. Configure the connection using the InfluxDB3 endpoint (e.g., `http://your-server-ip:8282`)
