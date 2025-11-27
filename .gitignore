@@ -1,4 +1,4 @@
 *.url
-*ipynb
+*.ipynb
 .env
 /venv
